@@ -25,7 +25,9 @@
     <div class="collapse navbar-collapse" id="top-nav">
       <ul class="nav navbar-nav navbar-right menu" id="menu">
         {% block navigation %}
-        <li><a href="https://pornhub.com">Your mum</a></li>
+        <li><a href="{% url 'blog:index' %}">Blog</a></li>
+        <li><a href="/about-us/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
         {% endblock %}
       </ul>
     </div>
