@@ -647,6 +647,10 @@ div.post-meta {
   font-size: 10px;
 }
 
+.post-meta address {
+  display: inline;
+}
+
 .closer {
   height: 50px;
   width: 41px;
