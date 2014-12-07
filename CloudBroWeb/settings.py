@@ -39,7 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'ordered_model',
     'blog',
+    'twitch',
 )
 
 MIDDLEWARE_CLASSES = (

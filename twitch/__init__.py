@@ -133,3 +133,6 @@ class TwitchAPI(object):
         if query_string is not '':
             return self._perform_request('/videos/top?' + query_string)
         return self._perform_request('/videos/top')
+
+
+api = TwitchAPI("dg5z0vaar0gesf8r3ah8ifgh1r7yekb")
