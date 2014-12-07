@@ -1,0 +1,18 @@
+{% load static humanize %}
+<div class="col-lg-8 col-md-8 article-feed">
+    {% for post in posts %}
+    <div class="article-post row">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+            <span class="avatar-medium avatar-border" style="background:url({% static 'blog/img/default.png' %}) no-repeat;"></span>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7">
+            <article itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="article-post-title" itemprop="headline">{{ post.title|title }}</h2>
+                <div class="post-meta"><time datetime="{{ post.created|date:'c' }}" itemprop="datePublished">{{ post.created|naturaltime }}</time> by <address><a href="mailto:{{ post.author.email }}">{{ post.author }}</a></address></div>
+                <p>{% autoescape off %}{{ post.content|truncatewords_html:35 }}{% endautoescape %}</p>
+                <a href="{% url 'blog:view_post' post.id %}/{{ post.title|slugify|urlencode }}" itemprop="url">Go to Full Post</a>
+            </article>
+        </div>
+    </div>
+    {% endfor %}
+</div>

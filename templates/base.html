@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Home - CloudBro Gaming{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/theme.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+  {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="{% static 'img/logo.svg' %}" onerror="this.src='{% static 'img/logo.png' %}'" alt="Cloudbro is pretty swell bruv" class="img-responsive"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="top-nav">
+      <ul class="nav navbar-nav navbar-right menu" id="menu">
+        {% block navigation %}
+        <li><a href="https://pornhub.com">Your mum</a></li>
+        {% endblock %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wrapper">
+{% block content %}
+{% endblock %}
+</div>
+{% block footer %}<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
+            <ul class="list-unstyled">
+              <li class="first">Internal links</li>
+              <li><a href="/">Home Page</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/twitch/">Twitch Viewer</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
+            <ul class="list-unstyled">
+              <li class="first">Social shiz</li>
+              <li><a href="https://www.facebook.com/pages/Cloud-Bro/211206668960142">Facebook</a></li>
+              <li><a href="https://twitter.com/CloudBro">Twitter</a></li>
+              <li><a href="http://www.twitch.tv/chatez">Twitch</a></li>
+              <li><a href="https://reddit.com/r/cloudbro">Our Subreddit</a></li>
+              <li><a href="https://www.youtube.com/user/CloudBroo">Youtube</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
+            <ul class="list-unstyled">
+              <li class="first">About us</li>
+              <li><a href="/about-us/">What we're all about</a></li>
+              <li><a href="ts3server://ts.cloudbro.net">Talk to us <span class="glyphicon glyphicon-new-window"></span></a></li>
+              <li><a href="/contact/">Contact us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <p>Get in touch with us @ <a href="mailto:chatez@cloudbro.net">chatez@cloudbro.net</a> or <a href="mailto:nicka101@cloudbro.net">nicka101@cloudbro.net</a> for Technical issues and inquiries</p>
+        <p>©<span id="year">2014</span> CloudBro. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>{% endblock %}
+<div id="scripts">
+  <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="{% static 'js/all.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/scroll.js' %}"></script>
+  {% block scripts %}{{ scripts }}{% endblock %}
+</div>
+<div id="video-lightbox"></div>
+</body>
+</html>

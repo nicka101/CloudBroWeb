@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home Page - CloudBro Gaming{% endblock %}
+{% block content %}<div class="row section" id="stream">
+    <div class="container">
+        <div class="col-sm-12 center hidden-xs hidden-sm clearfix">
+            <div class="stream-togglebox-header">
+                <div class="col-xs-2">
+                    <a href="http://www.twitch.tv/chatez" class="favi-link text-white">
+                        <i class="text-white fa fa-twitch fa-5x"></i>
+                    </a>
+                </div>
+                <div class="col-sm-8">
+                    <a href="http://www.twitch.tv/chatez"><h2 class="title-text text-white text-center">Our homeboy Chatez is live!</h2></a>
+                </div>
+                <div class="col-sm-2 text-right">
+                    <a class="collapsed" data-toggle="collapse" data-target=".togglebox-content">
+                        <i class="stream-toggle-icon fa fa-caret-down fa-5x"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="togglebox-content collapse stream-togglebox-content">
+                <div class="col-sm-12 stream-container">
+                    <object type="application/x-shockwave-flash" width="100%" height="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=lcs_pros_in_koreansoloq" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=chatez&auto_play=true&start_volume=25" /></object>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 center hidden-md hidden-lg clearfix">
+            <div class="stream-togglebox-header">
+                <div class="col-xs-2">
+                    <a href="http://www.twitch.tv/chatez" class="favi-link text-white">
+                        <i class="text-white fa fa-twitch fa-5x"></i>
+                    </a>
+                </div>
+                <div class="col-sm-8">
+                    <h2 class="title-text text-white text-center">Watch Chatez live!</h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-12 center clearfix">
+            <div class="stream-togglebox-header offline">
+                <div class="col-xs-2">
+                    <a href="http://www.twitch.tv/chatez" class="favi-link">
+                        <i class="fa fa-twitch fa-5x"></i>
+                    </a>
+                </div>
+                <div class="col-sm-8">
+                    <h2 class="title-text text-center">Nobody is streaming</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row section" id="news">
+    <div class="container">
+        <div class="row content">
+            <div class="col-lg-8 col-md-8"><h2 class="title-text">News</h2><hr></div>
+            <div class="col-lg-4 col-md-4 hidden-xs hidden-sm"><h2 class="title-text">Twitter</h2><hr></div><br>
+        </div>
+        <div class="row content">
+            {% autoescape on %}{{ blogwidget }}{% endautoescape %}
+            <div class="row content hidden-lg hidden-md">
+                <div class="col-lg-4"><h2 class="title-text">Twitter</h2><hr></div><br>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <a class="twitter-timeline" href="https://twitter.com/CloudBro" data-widget-id="509421744709328898">CloudBro tweets</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}
