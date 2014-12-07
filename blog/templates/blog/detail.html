@@ -8,32 +8,28 @@
       <div class="row">
             <div class="col-sm-10 blog-main">
               <div class="row">
-                <h1 class="blog-post-title">
-                  {{ title }}
-                </h1>
-                <p class="blog-post-meta"> {{ datestamp format="F jS, Y" }} by {{author}}</p>
-                
-                {{ content }}
-                {{ if pictures }}
+                <h1 class="blog-post-title">{{ post.title }}</h1>
+                <div class="blog-post-meta"><time datetime="{{ post.created|date:'c' }}">{{ post.created|date:'r' }}</time> by <address><a href="mailto:{{ post.author.email }}">{{ post.author }}</a></address></div>
+                <p>{% autoescape off %}{{ post.content }}{% endautoescape %}</p>
+                {% if pictures %}
                 <div class="blog-post-pictures">
-                {{ foreach picture in pictures }}
+                {% for picture in pictures %}
                 <span class="avatar-small avatar-border" style="background:url(/static/blog/img/default.png) no-repeat;"></span>
-                {{ endforeach }}
+                {% endfor %}
                 </div>
-                {{ endif }}
-                {{ if categories }}
+                {% endif %}
+                {% if categories %}
                 <p class="entry-meta"> Filed under {{ categories_url_list }}.</p>
-                {{ endif }}
-                {{ if sharing }}
+                {% endif %}
+                {% if sharing %}
                 <ul class="sharing-icons">
                     <li><a href="http://www.facebook.com/CloudBro"><i class="fa fa-facebook-square"></i> </a></li>
                     <li><a href="http://twitter.com/#!/cloudbro"><i class="fa fa-twitter-square"></i> </a></li>
                     <li><a href="http://plus.google.com/100344786668171874962"><i class="fa fa-google-plus-square"></i> </a></li>
                     <li><a href="http://reddit.com/r/cloudbro"><i class="fa fa-reddit-square"></i> </a></li>
                 </ul>
-                {{ endif }}
+                {% endif %}
               </div>
-                
           </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ def index(request):
 
 
 def view_post(request, post_id):
-    return HttpResponse("Blog post view")
+    return render(request, 'blog/detail.html', {'post': Post.objects.get(id=post_id)})
 
 
 def render_widget(post_count):
