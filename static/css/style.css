@@ -709,6 +709,26 @@ div.post-meta {
   text-align: center;
 }
 
+/* Blog Detail */
+.blog-main {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.blog-post {
+  margin-bottom: 60px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 40px;
+}
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: #999;
+}
+
+.blog-post-pictures
+
 /*--------------*/
 /*----Footer----*/
 /*--------------*/
