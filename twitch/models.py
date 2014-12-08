@@ -1,5 +1,6 @@
 from django.db import models
 from ordered_model.models import OrderedModel
+from collections import namedtuple
 
 
 class StreamPreference(OrderedModel):
@@ -10,3 +11,6 @@ class StreamPreference(OrderedModel):
 
     def __str__(self):
         return "%s at position %d" % (self.username, self.order)
+
+
+Stream = namedtuple('stream', ['username', 'display_name', 'viewer_count', 'status', 'game'])

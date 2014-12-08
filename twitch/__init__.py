@@ -52,7 +52,7 @@ class TwitchAPI(object):
         return self._perform_request('/streams')
 
     def get_stream(self, channel_name):
-        return self._perform_request('/stream/' + quote(channel_name, None))
+        return self._perform_request('/stream/' + quote(channel_name, ''))
 
     def get_featured_streams(self, limit=25, offset=0, hls=False):
         query_string = TwitchAPI._build_qs(limit, offset, hls)
@@ -67,19 +67,19 @@ class TwitchAPI(object):
         return self._perform_request('/streams/summary')
 
     def get_channel(self, channel_name):
-        return self._perform_request('/channel/' + quote(channel_name, None))
+        return self._perform_request('/channel/' + quote(channel_name, ''))
 
     def get_channel_videos(self, channel_name, limit=10, offset=0, broadcasts=False):
         query_string = TwitchAPI._build_qs(limit, offset, broadcasts=broadcasts)
         if query_string is not '':
-            return self._perform_request('/channels/' + quote(channel_name, None) + '/videos?' + query_string)
-        return self._perform_request('/channels/' + quote(channel_name, None) + '/videos')
+            return self._perform_request('/channels/' + quote(channel_name, '') + '/videos?' + query_string)
+        return self._perform_request('/channels/' + quote(channel_name, '') + '/videos')
 
     def get_channel_followers(self, channel_name, limit=25, offset=0):
         query_string = TwitchAPI._build_qs(limit, offset)
         if query_string is not '':
-            return self._perform_request('/channels/' + quote(channel_name, None) + '/follows?' + query_string)
-        return self._perform_request('/channels/' + quote(channel_name, None) + '/follows')
+            return self._perform_request('/channels/' + quote(channel_name, '') + '/follows?' + query_string)
+        return self._perform_request('/channels/' + quote(channel_name, '') + '/follows')
 
     def get_chat_emoticons(self):
         return self._perform_request('/chat/emoticons')
@@ -87,11 +87,11 @@ class TwitchAPI(object):
     def get_user_follows(self, username, limit=25, offset=0):
         query_string = TwitchAPI._build_qs(limit, offset)
         if query_string is not '':
-            return self._perform_request('/users/' + quote(username, None) + '/follows/channels?' + query_string)
-        return self._perform_request('/users/' + quote(username, None) + '/follows/channels')
+            return self._perform_request('/users/' + quote(username, '') + '/follows/channels?' + query_string)
+        return self._perform_request('/users/' + quote(username, '') + '/follows/channels')
 
     def does_user_follow_channel(self, username, channel_name):
-        req = Request(_baseurl + '/users/' + quote(username, None) + '/follows/channels/' + quote(channel_name, None),
+        req = Request(_baseurl + '/users/' + quote(username, '') + '/follows/channels/' + quote(channel_name, None),
                       None,
                       {'Accept': _apiversionheader, 'Client-ID': self.client_id},
                       method='HEAD'
@@ -120,15 +120,15 @@ class TwitchAPI(object):
         return self._perform_request('/teams')
 
     def get_team(self, team_name):
-        return self._perform_request('/teams/' + quote(team_name, None))
+        return self._perform_request('/teams/' + quote(team_name, ''))
 
     def get_user(self, username):
-        return self._perform_request('/users/' + quote(username, None))
+        return self._perform_request('/users/' + quote(username, ''))
 
     def get_video(self, video_id):
-        return self._perform_request('/videos/' + quote(video_id, None))
+        return self._perform_request('/videos/' + quote(video_id, ''))
 
-    def get_top_videos(self, limit=10, offset=0, game=None, period="week"):
+    def get_top_videos(self, limit=10, offset=0, game='', period="week"):
         query_string = TwitchAPI._build_qs(limit, offset, game=game, period=period)
         if query_string is not '':
             return self._perform_request('/videos/top?' + query_string)
