@@ -9,13 +9,13 @@ def get_first_available_stream():
     for user in pref:
         try:
             res = api.get_stream(user.username)
-            if res.stream is None:  # Stream offline
+            if res['stream'] is None:  # Stream offline
                 continue
             return Stream(user.username,
-                          res.stream.channel.display_name,
-                          res.stream.viewers,
-                          res.stream.status,
-                          res.stream.game
+                          res['stream']['channel']['display_name'],
+                          res['stream']['viewers'],
+                          res['stream']['channel']['status'],
+                          res['stream']['game']
                           )
         except HTTPError:
             continue

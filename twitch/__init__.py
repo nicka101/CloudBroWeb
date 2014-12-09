@@ -1,7 +1,7 @@
 from urllib.request import Request, urlopen
 from urllib.parse import quote, urlencode
 from urllib.error import HTTPError
-from json import JSONDecoder
+import json
 
 
 _baseurl = "https://api.twitch.tv/kraken"
@@ -11,11 +11,10 @@ _apiversionheader = "application/vnd.twitchtv.v2+json"
 class TwitchAPI(object):
     def __init__(self, client_id):
         self.client_id = client_id
-        self.decoder = JSONDecoder()
 
     def _perform_request(self, path):
         req = Request(_baseurl + path, None, {'Accept': _apiversionheader, 'Client-ID': self.client_id})
-        return self.decoder.decode(urlopen(req))
+        return json.loads(urlopen(req).readall().decode('utf-8'))
 
     @staticmethod
     def _build_qs(limit=25, offset=0, hls=False, embeddable=False, channel=None, game=None, broadcasts=False, q=None, period='week'):
@@ -52,7 +51,7 @@ class TwitchAPI(object):
         return self._perform_request('/streams')
 
     def get_stream(self, channel_name):
-        return self._perform_request('/stream/' + quote(channel_name, ''))
+        return self._perform_request('/streams/' + quote(channel_name, ''))
 
     def get_featured_streams(self, limit=25, offset=0, hls=False):
         query_string = TwitchAPI._build_qs(limit, offset, hls)
