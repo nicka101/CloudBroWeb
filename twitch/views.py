@@ -8,8 +8,6 @@ import json
 
 def get_first_available_stream():
     streams = get_available_streams()
-    if streams is None:
-        return None
     pref = StreamPreference.objects.all()
     for user in pref:
         res = [stream for stream in streams if stream.username == user.username]
@@ -17,13 +15,14 @@ def get_first_available_stream():
             return res[0]
     return None
 
+
 def get_available_streams():
     pref = StreamPreference.objects.all()
     channels = ",".join(user.username for user in pref)
     try:
         res = api.get_streams(channel=channels)
         if res['streams'] is None:
-            return None
+            return []
         streams = []
         for stream in res['streams']:
             streams.append(Stream(
@@ -33,13 +32,16 @@ def get_available_streams():
                 stream['channel']['status'],
                 stream['game']
             ))
-        return streams
     except HTTPError:
-        return None
+        return []
+    streams_ordered = []
+    for user in pref:
+        res = [stream for stream in streams if stream.username == user.username]
+        if len(res) is 1:
+            streams_ordered.append(res[0])
+    return streams_ordered
 
 
 def available_streams(request):
-    stream = get_first_available_stream()
-    if stream is None:
-        return HttpResponse('{ "stream": null }', 'application/json')
-    return HttpResponse('{ "stream": ' + json.dumps(stream.__dict__) + ' }', 'application/json')
+    streams = get_available_streams()
+    return HttpResponse('{ "streams": ' + json.dumps([stream.__dict__ for stream in streams]) + ' }', 'application/json')

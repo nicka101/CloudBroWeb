@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Home Page - CloudBro Gaming{% endblock %}
+{% block scripts %}<script src="{% static 'twitch/js/streams.js' %}"></script>{{ scripts }}{% endblock %}
 {% block content %}<div class="row section" id="stream">
     <div class="container">
-        <div class="col-sm-12 center hidden-xs hidden-sm clearfix">
+        <div class="col-sm-12 center clearfix">
             <div class="stream-togglebox-header">
                 <div class="col-xs-2">
                     <a href="http://www.twitch.tv/chatez" class="favi-link text-white">
@@ -11,9 +12,12 @@
                     </a>
                 </div>
                 <div class="col-sm-8">
-                    <a href="http://www.twitch.tv/chatez"><h2 class="title-text text-white text-center">Our homeboy Chatez is live!</h2></a>
+                    <a href="http://www.twitch.tv/chatez">
+						<h2 class="title-text text-white text-center hidden-xs hidden-sm">Our homeboy Chatez is live!</h2>
+						<h2 class="title-text text-white text-center hidden-md hidden-lg">Watch Chatez live!</h2>
+					</a>
                 </div>
-                <div class="col-sm-2 text-right">
+                <div class="col-sm-2 text-right hidden-xs hidden-sm">
                     <a class="collapsed" data-toggle="collapse" data-target=".togglebox-content">
                         <i class="stream-toggle-icon fa fa-caret-down fa-5x"></i>
                     </a>
@@ -25,19 +29,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 center hidden-md hidden-lg clearfix">
-            <div class="stream-togglebox-header">
-                <div class="col-xs-2">
-                    <a href="http://www.twitch.tv/chatez" class="favi-link text-white">
-                        <i class="text-white fa fa-twitch fa-5x"></i>
-                    </a>
-                </div>
-                <div class="col-sm-8">
-                    <h2 class="title-text text-white text-center">Watch Chatez live!</h2>
-                </div>
-            </div>
-        </div>
-        <br>
         <div class="col-sm-12 center clearfix">
             <div class="stream-togglebox-header offline">
                 <div class="col-xs-2">
