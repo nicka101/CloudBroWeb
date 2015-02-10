@@ -452,6 +452,18 @@ i.stream-toggle-icon {
   cursor: pointer;
 }
 
+.offline .online-only {
+  display:none !important;
+}
+
+.offline-only {
+  display:none !important;
+}
+
+.offline .offline-only {
+  display:block !important;
+}
+
 .title-text {
   font-family: 'lobster';
   font-size: 48px;
