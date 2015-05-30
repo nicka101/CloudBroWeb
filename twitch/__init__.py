@@ -22,7 +22,7 @@ class TwitchAPI(object):
         if game is not None:
             query['game'] = game
         if channel is not None:
-            query['channel'] = channel
+            query['channel'] = channel.lower()
         if limit is not 25:
             if limit > 100 or limit <= 0:
                 raise ValueError('limit must be in the range 1-100 (inclusive)')
