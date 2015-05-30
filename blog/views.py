@@ -4,7 +4,7 @@ from blog.models import Post
 
 
 def index(request):
-    return render(request, 'blog/index.html')
+    return render(request, 'blog/index.html', {'posts': Post.objects.order_by('-created')[:5]})
 
 
 def view_post(request, post_id):

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load staticfiles humanize %}
 {% block title %}Blog - CloudBro Gaming{% endblock %}
 {% block scripts %}<script src="{% static 'blog/js/blog.js' %}"></script>{{ scripts }}{% endblock %}
 {% block content %}
@@ -11,45 +11,21 @@
         </div>
         <div class="row content">
             <div class="col-lg-9 article-feed">
+                {% for post in posts %}
                 <div class="article-post row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <a class="btn-close closer"></a>
-                        <h2 class="article-post-title">
-                            Streaming 24h for J’s beard growing hormones
-                        </h2>
-                        <div class="post-meta">08/09/2014 by Chatez ‘CloudBro’ Jones</div>
-                        <article class="post-content">
-                            Praesent erat elit, pellentesque scelerisque mauris vestibulum, imperdiet molestie elit. Nam at sagittis orci, et ultrices enim. In posuere consectetur ligula sed dignissim. Mauris sit amet purus at urna malesuada fringilla. Proin ipsum mauris, imperdiet a luctus vel, commodo ac lorem. Cras laoreet lacus enim. Duis magna urna, dignissim quis rutrum at, tempus nec enim.
-                            <a>Read More....</a>
+                        <article itemscope itemtype="http://schema.org/BlogPosting">
+                            <h2 class="article-post-title" itemprop="headline">{{ post.title|title }}</h2>
+                            <div class="post-meta"><time datetime="{{ post.created|date:'c' }}" itemprop="datePublished">{{ post.created|naturaltime }}</time> by <address><a href="mailto:{{ post.author.email }}">{{ post.author }}</a></address></div>
+                            <div class="post-content">
+                                <p>{% autoescape off %}{{ post.content|truncatewords_html:35 }}{% endautoescape %}</p>
+                                <a href="{% url 'blog:view_post' post.id %}/{{ post.title|slugify|urlencode }}" itemprop="url">Read More...</a>
+                            </div>
                         </article>
                     </div>
                 </div>
-                <div class="article-post row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <a class="btn-close closer"></a>
-                        <h2 class="article-post-title">
-                            The world should be aware of the danger of cocopuffs
-                        </h2>
-                        <div class="post-meta">08/09/2014 by Chatez ‘CloudBro’ Jones</div>
-                        <article class="post-content">
-                            Praesent erat elit, pellentesque scelerisque mauris vestibulum, imperdiet molestie elit. Nam at sagittis orci, et ultrices enim. In posuere consectetur ligula sed dignissim. Mauris sit amet purus at urna malesuada fringilla. Proin ipsum mauris, imperdiet a luctus vel, commodo ac lorem. Cras laoreet lacus enim. Duis magna urna, dignissim quis rutrum at, tempus nec enim.
-                            <a>Read More....</a>
-                        </article>
-                    </div>
-                </div>
-                <div class="article-post row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#27B5DF
-                        <a class="btn-close closer"></a>
-                        <h2 class="article-post-title">
-                            I did this ice bucket thing but with scorpions for charity
-                        </h2>
-                        <div class="post-meta">08/09/2014 by Chatez ‘CloudBro’ Jones</div>
-                        <article class="post-content">
-                            Praesent erat elit, pellentesque scelerisque mauris vestibulum, imperdiet molestie elit. Nam at sagittis orci, et ultrices enim. In posuere consectetur ligula sed dignissim. Mauris sit amet purus at urna malesuada fringilla. Proin ipsum mauris, imperdiet a luctus vel, commodo ac lorem. Cras laoreet lacus enim. Duis magna urna, dignissim quis rutrum at, tempus nec enim.
-                            <a>Read More....</a>
-                        </article>
-                    </div>
-                </div>
+                {% endfor %}
                 <a href="" class="btn btn-blue">
                     Archive
                 </a>

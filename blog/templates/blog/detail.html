@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load staticfiles %}
 {% block title %}Blog - CloudBro Gaming{% endblock %}
 {% block scripts %}<script src="{% static 'blog/js/blog.js' %}"></script>{{ scripts }}{% endblock %}
 {% block content %}
@@ -11,13 +11,6 @@
                 <h1 class="blog-post-title">{{ post.title }}</h1>
                 <div class="blog-post-meta"><time datetime="{{ post.created|date:'c' }}">{{ post.created|date:'r' }}</time> by <address><a href="mailto:{{ post.author.email }}">{{ post.author }}</a></address></div>
                 <p>{% autoescape off %}{{ post.content }}{% endautoescape %}</p>
-                {% if pictures %}
-                <div class="blog-post-pictures">
-                {% for picture in pictures %}
-                <span class="avatar-small avatar-border" style="background:url(/static/blog/img/default.png) no-repeat;"></span>
-                {% endfor %}
-                </div>
-                {% endif %}
                 {% if categories %}
                 <p class="entry-meta"> Filed under {{ categories_url_list }}.</p>
                 {% endif %}
