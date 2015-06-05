@@ -4,6 +4,31 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}Home - CloudBro Gaming{% endblock %}</title>
+      <style>
+/*IMPORTS*/
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(https://themes.googleusercontent.com/static/fonts/lato/v7/kcf5uOXucLcbFOydGU24WALUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://themes.googleusercontent.com/static/fonts/lato/v7/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://themes.googleusercontent.com/static/fonts/lato/v7/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+@font-face {
+  font-family: 'lobster';
+  src: url('../fonts/Lobster.ttf') format('truetype');
+}
+    </style>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/theme.css' %}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
@@ -26,7 +51,7 @@
       <ul class="nav navbar-nav navbar-right menu" id="menu">
         {% block navigation %}
         <li><a href="{% url 'blog:index' %}">Blog</a></li>
-        <li><a href="/about-us/">About</a></li>
+        <li><a href="ts3server://ts.cloudbro.net">Teamspeak &nbsp;&nbsp;<span class="glyphicon glyphicon-new-window"></span></a></li>
         <li><a href="/contact/">Contact</a></li>
         {% endblock %}
       </ul>
@@ -63,7 +88,6 @@
           <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
             <ul class="list-unstyled">
               <li class="first">About us</li>
-              <li><a href="/about-us/">What we're all about</a></li>
               <li><a href="ts3server://ts.cloudbro.net">Talk to us <span class="glyphicon glyphicon-new-window"></span></a></li>
               <li><a href="/contact/">Contact us</a></li>
             </ul>
@@ -71,8 +95,8 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-        <p>Get in touch with us @ <a href="mailto:chatez@cloudbro.net">chatez@cloudbro.net</a> or <a href="mailto:nicka101@cloudbro.net">nicka101@cloudbro.net</a> for Technical issues and inquiries</p>
-        <p>©<span id="year">2014</span> CloudBro. All Rights Reserved.</p>
+        <a href="http://www.teamspeak.com/?tour=yes"><img src="{% static 'img/teamspeak-sponsor.png' %}" alt="Sponsored by Teamspeak" /></a>
+        <p>©<span id="year">2015</span> CloudBro. All Rights Reserved.</p>
       </div>
     </div>
   </div>
