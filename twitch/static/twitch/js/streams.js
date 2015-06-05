@@ -8,7 +8,7 @@ var Streams = (function() {
 	var STREAM_EMBED_CLASS = 'stream-embed';
 
     var HREF_TEMPLATE = 'http://www.twitch.tv/{username}';
-	var LONG_TEXT_TEMPLATE = 'Our homeboy {username} is live!';
+	var LONG_TEXT_TEMPLATE = '{username} is currently live!';
 	var SHORT_TEXT_TEMPLATE = 'Watch {username} live!';
 	var STREAM_EMBED_TEMPLATE = '<object type="application/x-shockwave-flash" width="100%" height="100%" id="live_embed_player_flash" data="//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={username}&auto_play=true&start_volume=25&embed=1" /></object>';
 
